@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route, NavLink, useLocation } from 'react-router
 import Home from './pages/Home'
 import Products from './pages/Products'
 import Admin from './pages/Admin'
+import BookingHome from './pages/BookingHome'
+import BookingPage from './pages/BookingPage'
+import BookingDashboard from './pages/BookingDashboard'
 import Footer from './components/Footer'
 
 function Nav() {
@@ -54,7 +57,7 @@ function Nav() {
 
 function Layout() {
   const location = useLocation()
-  const isAdmin = location.pathname === '/admin'
+  const hideFooter = location.pathname === '/admin' || location.pathname === '/booking/dashboard'
 
   return (
     <>
@@ -64,8 +67,11 @@ function Layout() {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/booking" element={<BookingHome />} />
+          <Route path="/booking/book" element={<BookingPage />} />
+          <Route path="/booking/dashboard" element={<BookingDashboard />} />
         </Routes>
-        {!isAdmin && <Footer />}
+        {!hideFooter && <Footer />}
       </div>
     </>
   )
