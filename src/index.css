@@ -1,9 +1,115 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-body {
-  background-color: #FAF8F5;
-  color: #2C2C2C;
-  font-family: system-ui, -apple-system, sans-serif;
+@theme {
+  /* Fonts */
+  --font-display: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+
+  /* Background colors */
+  --color-base: #FAF8F5;
+  --color-surface: #FFFFFF;
+  --color-subtle: #F4F0EA;
+  --color-overlay: rgba(26, 26, 24, 0.6);
+
+  /* Text colors */
+  --color-primary: #1A1A18;
+  --color-secondary: #4A4A42;
+  --color-tertiary: #8A8A7A;
+  --color-inverse: #FAF8F5;
+
+  /* Accent */
+  --color-accent: #5C6E4A;
+  --color-accent-hover: #4A5A3A;
+  --color-accent-light: #EEF1E9;
+  --color-accent-subtle: #D4DCCC;
+
+  /* Semantic */
+  --color-success: #2E7D52;
+  --color-success-bg: #EDFAF4;
+  --color-warning: #92681A;
+  --color-warning-bg: #FEF6E4;
+  --color-error: #C0392B;
+  --color-error-bg: #FDECEA;
+
+  /* Borders */
+  --color-border: #E2DBD0;
+  --color-border-strong: #C8BBAC;
+  --color-border-focus: #5C6E4A;
+
+  /* Border radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(26, 26, 24, 0.06);
+  --shadow-sm: 0 1px 3px rgba(26, 26, 24, 0.10), 0 1px 2px rgba(26, 26, 24, 0.06);
+  --shadow-md: 0 4px 6px rgba(26, 26, 24, 0.07), 0 2px 4px rgba(26, 26, 24, 0.06);
+  --shadow-lg: 0 10px 15px rgba(26, 26, 24, 0.10), 0 4px 6px rgba(26, 26, 24, 0.05);
+  --shadow-xl: 0 20px 25px rgba(26, 26, 24, 0.10), 0 8px 10px rgba(26, 26, 24, 0.04);
+  --shadow-modal: 0 25px 50px rgba(26, 26, 24, 0.25);
+
+  /* Easing */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Skeleton animation */
+  --animate-skeleton: skeleton-pulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes skeleton-pulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.8; }
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-base);
+  color: var(--color-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+/* Custom scrollbar for modals */
+.modal-scroll::-webkit-scrollbar { width: 4px; }
+.modal-scroll::-webkit-scrollbar-thumb { background: var(--color-accent-subtle); border-radius: 2px; }
+.modal-scroll::-webkit-scrollbar-track { background: transparent; }
+
+/* Modal entrance animation */
+.modal-container {
+  animation: modal-in 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 9999px;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+/* Skeleton pulse */
+.skeleton {
+  background-color: var(--color-subtle);
+  animation: skeleton-pulse 1.2s ease-in-out infinite alternate;
+  border-radius: 4px;
 }

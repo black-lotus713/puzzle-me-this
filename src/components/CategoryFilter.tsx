@@ -7,15 +7,15 @@ interface Props {
 
 export default function CategoryFilter({ selected, onChange }: Props) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 py-1">
       {CATEGORIES.map((cat) => (
         <button
           key={cat}
           onClick={() => onChange(cat)}
-          className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+          className={`px-4 py-2 rounded-full text-sm font-medium border-[1.5px] transition-all duration-[150ms] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent ${
             selected === cat
-              ? 'bg-olive text-white'
-              : 'bg-tan text-charcoal hover:bg-olive/20'
+              ? 'bg-accent-light border-accent text-accent font-semibold'
+              : 'bg-transparent border-border text-secondary hover:bg-subtle hover:border-border-strong'
           }`}
         >
           {cat}
