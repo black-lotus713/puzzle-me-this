@@ -6,6 +6,8 @@ import Admin from './pages/Admin'
 import BookingHome from './pages/BookingHome'
 import BookingPage from './pages/BookingPage'
 import BookingDashboard from './pages/BookingDashboard'
+import TestimonialsPage from './pages/TestimonialsPage'
+import TestimonialsDashboard from './pages/TestimonialsDashboard'
 import Footer from './components/Footer'
 
 function Nav() {
@@ -44,10 +46,22 @@ function Nav() {
             Products
           </NavLink>
           <NavLink
+            to="/testimonials"
+            className={({ isActive }) => `${linkBase} ${isActive ? linkActive : ''}`}
+          >
+            Testimonials
+          </NavLink>
+          <NavLink
             to="/admin"
             className={({ isActive }) => `${linkBase} ${isActive ? linkActive : ''}`}
           >
             Admin
+          </NavLink>
+          <NavLink
+            to="/testimonials/dashboard"
+            className={({ isActive }) => `${linkBase} ${isActive ? linkActive : ''}`}
+          >
+            Reviews Dashboard
           </NavLink>
         </nav>
       </div>
@@ -57,7 +71,7 @@ function Nav() {
 
 function Layout() {
   const location = useLocation()
-  const hideFooter = location.pathname === '/admin' || location.pathname === '/booking/dashboard'
+  const hideFooter = location.pathname === '/admin' || location.pathname === '/booking/dashboard' || location.pathname === '/testimonials/dashboard'
 
   return (
     <>
@@ -70,6 +84,8 @@ function Layout() {
           <Route path="/booking" element={<BookingHome />} />
           <Route path="/booking/book" element={<BookingPage />} />
           <Route path="/booking/dashboard" element={<BookingDashboard />} />
+          <Route path="/testimonials" element={<TestimonialsPage />} />
+          <Route path="/testimonials/dashboard" element={<TestimonialsDashboard />} />
         </Routes>
         {!hideFooter && <Footer />}
       </div>
