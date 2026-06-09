@@ -10,6 +10,8 @@ import TestimonialsPage from './pages/TestimonialsPage'
 import TestimonialsDashboard from './pages/TestimonialsDashboard'
 import FaqPage from './pages/FaqPage'
 import FaqDashboard from './pages/FaqDashboard'
+import CaseStudiesPage from './pages/CaseStudiesPage'
+import CaseStudiesDashboard from './pages/CaseStudiesDashboard'
 import Footer from './components/Footer'
 
 function Nav() {
@@ -77,6 +79,12 @@ function Nav() {
           >
             FAQ Dashboard
           </NavLink>
+          <NavLink
+            to="/case-studies"
+            className={({ isActive }) => `${linkBase} ${isActive ? linkActive : ''}`}
+          >
+            Case Studies
+          </NavLink>
         </nav>
       </div>
     </header>
@@ -85,7 +93,7 @@ function Nav() {
 
 function Layout() {
   const location = useLocation()
-  const hideFooter = location.pathname === '/admin' || location.pathname === '/booking/dashboard' || location.pathname === '/testimonials/dashboard' || location.pathname === '/faq/dashboard'
+  const hideFooter = location.pathname === '/admin' || location.pathname === '/booking/dashboard' || location.pathname === '/testimonials/dashboard' || location.pathname === '/faq/dashboard' || location.pathname === '/case-studies/dashboard'
 
   return (
     <>
@@ -102,6 +110,8 @@ function Layout() {
           <Route path="/testimonials/dashboard" element={<TestimonialsDashboard />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/faq/dashboard" element={<FaqDashboard />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/case-studies/dashboard" element={<CaseStudiesDashboard />} />
         </Routes>
         {!hideFooter && <Footer />}
       </div>
