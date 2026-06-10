@@ -12,6 +12,8 @@ import FaqPage from './pages/FaqPage'
 import FaqDashboard from './pages/FaqDashboard'
 import CaseStudiesPage from './pages/CaseStudiesPage'
 import CaseStudiesDashboard from './pages/CaseStudiesDashboard'
+import CareersPage from './pages/CareersPage'
+import CareersDashboard from './pages/CareersDashboard'
 import Footer from './components/Footer'
 
 function Nav() {
@@ -85,6 +87,18 @@ function Nav() {
           >
             Case Studies
           </NavLink>
+          <NavLink
+            to="/careers"
+            className={({ isActive }) => `${linkBase} ${isActive ? linkActive : ''}`}
+          >
+            Careers
+          </NavLink>
+          <NavLink
+            to="/careers/dashboard"
+            className={({ isActive }) => `${linkBase} ${isActive ? linkActive : ''}`}
+          >
+            Careers Dashboard
+          </NavLink>
         </nav>
       </div>
     </header>
@@ -93,7 +107,7 @@ function Nav() {
 
 function Layout() {
   const location = useLocation()
-  const hideFooter = location.pathname === '/admin' || location.pathname === '/booking/dashboard' || location.pathname === '/testimonials/dashboard' || location.pathname === '/faq/dashboard' || location.pathname === '/case-studies/dashboard'
+  const hideFooter = location.pathname === '/admin' || location.pathname === '/booking/dashboard' || location.pathname === '/testimonials/dashboard' || location.pathname === '/faq/dashboard' || location.pathname === '/case-studies/dashboard' || location.pathname === '/careers/dashboard'
 
   return (
     <>
@@ -112,6 +126,8 @@ function Layout() {
           <Route path="/faq/dashboard" element={<FaqDashboard />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/case-studies/dashboard" element={<CaseStudiesDashboard />} />
+          <Route path="/careers" element={<CareersPage />} />
+          <Route path="/careers/dashboard" element={<CareersDashboard />} />
         </Routes>
         {!hideFooter && <Footer />}
       </div>
